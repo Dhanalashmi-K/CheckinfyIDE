@@ -1,8 +1,11 @@
+require('dotenv').config()
 var defaultUrl = localStorageGetItem("api-url") || "https://secure.judge0.com/standard";
 var apiUrl = " https://api.judge0.com";
 var wait = localStorageGetItem("wait") || false;
 var pbUrl = "https://pb.judge0.com";
 var check_timeout = 200;
+var LINK=process.env.URL1;
+var LINK1=process.env.URL2;
 var val0=localStorage.getItem('val0')||"row";
 var val1=localStorage.getItem('val1')||"row";
 var val2=localStorage.getItem('val2')||"column";
@@ -230,24 +233,6 @@ function handleResult(data) {
             dot.hidden = false;
         }
     }
-    // if (stderr !== "") {
-    //     var dot = document.getElementById("stderr-dot");
-    //     if (!dot.parentElement.classList.contains("lm_active")) {
-    //         dot.hidden = false;
-    //     }
-    // }
-    // if (compile_output !== "") {
-    //     var dot = document.getElementById("compile-output-dot");
-    //     if (!dot.parentElement.classList.contains("lm_active")) {
-    //         dot.hidden = false;
-    //     }
-    // }
-    // if (sandbox_message !== "") {
-    //     var dot = document.getElementById("sandbox-message-dot");
-    //     if (!dot.parentElement.classList.contains("lm_active")) {
-    //         dot.hidden = false;
-    //     }
-    // }
 
 }
 
@@ -268,7 +253,7 @@ function loadSavedSource() {
 
     if (snippet_id.length == 36) {
         $.ajax({
-            url: apiUrl + "/submissions/" + snippet_id + "?fields=source_code,language_id,stdin,stdout,message,time,compile_output,stderr,memory,status,compiler_options,command_line_arguments&base64_encoded=true",
+            url: URL1 + "/submissions/" + snippet_id + "?fields=source_code,language_id,stdin,stdout,message,time,compile_output,stderr,memory,status,compiler_options,command_line_arguments&base64_encoded=true",
             type: "GET",
             success: function(data, textStatus, jqXHR) {
                 sourceEditor.setValue(decode(data["source_code"]));
@@ -358,7 +343,7 @@ function run() {
             async: true,
           "headers":{
             "X-RapidAPI-Host":"judge0.p.rapidapi.com",
-            "X-RapidAPI-Key":"8f624735edmsha34805c99734d84p1037cdjsn583cad8fd10b"
+            "X-RapidAPI-Key":URL1
           },
             contentType: "application/json",
             data: JSON.stringify(data),
@@ -411,7 +396,7 @@ function fetchSubmission(submission_token) {
         type: "GET",
         "headers": {
 		"x-rapidapi-host": "judge0.p.rapidapi.com",
-		"x-rapidapi-key": "8f624735edmsha34805c99734d84p1037cdjsn583cad8fd10b"
+		"x-rapidapi-key": URL1
 	},
         async: true,
         success: function (data, textStatus, jqXHR) {
@@ -499,9 +484,6 @@ function editorsUpdateFontSize(fontSize) {
     sourceEditor.updateOptions({fontSize: fontSize});
     stdinEditor.updateOptions({fontSize: fontSize});
     stdoutEditor.updateOptions({fontSize: fontSize});
-    //stderrEditor.updateOptions({fontSize: fontSize});
-    //compileOutputEditor.updateOptions({fontSize: fontSize});
-    //sandboxMessageEditor.updateOptions({fontSize: fontSize});
 }
 
 function updateScreenElements() {
@@ -686,66 +668,6 @@ $(document).ready(function () {
                 });
             });
         });
-
-//         layout1.registerComponent("stderr", function (container, state) {
-//             stderrEditor = monaco.editor.create(container.getElement()[0], {
-//                 automaticLayout: true,
-//                 theme: themeopt,
-//                 scrollBeyondLastLine: false,
-//                 readOnly: state.readOnly,
-//                 language: "plaintext",
-//                 minimap: {
-//                     enabled: false
-//                 }
-//             });
-
-//             container.on("tab", function(tab) {
-//                 tab.element.append("<span id=\"stderr-dot\" class=\"dot\" hidden></span>");
-//                 tab.element.on("mousedown", function(e) {
-//                     e.target.closest(".lm_tab").children[3].hidden = true;
-//                 });
-//             });
-//         });
-
-//         layout.registerComponent("compile output", function (container, state) {
-//             compileOutputEditor = monaco.editor.create(container.getElement()[0], {
-//                 automaticLayout: true,
-//                 theme: themeopt,
-//                 scrollBeyondLastLine: false,
-//                 readOnly: state.readOnly,
-//                 language: "plaintext",
-//                 minimap: {
-//                     enabled: false
-//                 }
-//             });
-
-//             container.on("tab", function(tab) {
-//                 tab.element.append("<span id=\"compile-output-dot\" class=\"dot\" hidden></span>");
-//                 tab.element.on("mousedown", function(e) {
-//                     e.target.closest(".lm_tab").children[3].hidden = true;
-//                 });
-//             });
-//         });
-
-//         layout1.registerComponent("sandbox message", function (container, state) {
-//             sandboxMessageEditor = monaco.editor.create(container.getElement()[0], {
-//                 automaticLayout: true,
-//                 theme: themeopt,
-//                 scrollBeyondLastLine: false,
-//                 readOnly: state.readOnly,
-//                 language: "plaintext",
-//                 minimap: {
-//                     enabled: false
-//                 }
-//             });
-
-//             container.on("tab", function(tab) {
-//                 tab.element.append("<span id=\"sandbox-message-dot\" class=\"dot\" hidden></span>");
-//                 tab.element.on("mousedown", function(e) {
-//                     e.target.closest(".lm_tab").children[3].hidden = true;
-//                 });
-//             });
-//         });
 
         layout.on("initialised", function () {
             $(".monaco-editor")[0].appendChild($("#editor-status-line")[0]);
