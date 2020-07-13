@@ -8,10 +8,10 @@ Checkinfy is an instant ready, full-featured online IDE and debugging tool. It c
 
 # Features
 
-. User friendly online compiler
-. Can download your files
-. Code in 30+ languages
-. Quick error spotting
+ User friendly online compiler
+ Can download your files
+ Code in 30+ languages
+ Quick error spotting
 
 # Working
 
