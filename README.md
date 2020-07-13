@@ -8,10 +8,13 @@ Checkinfy is an instant ready, full-featured online IDE and debugging tool. It c
 
 ## Features
 
- User friendly online compiler
- Can download your files
- Code in 30+ languages
- Quick error spotting
+ - User friendly online compiler
+ 
+ -Can download your files
+ 
+ - Code in 30+ languages
+ 
+ - Quick error spotting
 
 ## Working
 
@@ -25,6 +28,8 @@ For more details to work with Checkinfy online IDE click on the link here https:
 To download the code visit https://github.com/Dhanalashmi-K/CheckinfyIDE.git
 
 ## Contact Details
-Checkinfy developed by Dhanalashmi K
-To contact using Gmail dhanalashmikh@gmail.com
-To contact using LinkedIn https://www.linkedin.com/in/dhanalashmi-kumarasamy-6b363816b
+- Checkinfy developed by Dhanalashmi K
+
+- To contact using Gmail dhanalashmikh@gmail.com
+
+- To contact using LinkedIn https://www.linkedin.com/in/dhanalashmi-kumarasamy-6b363816b
