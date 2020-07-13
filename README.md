@@ -10,7 +10,7 @@ Checkinfy is an instant ready, full-featured online IDE and debugging tool. It c
 
  - User friendly online compiler
  
- -Can download your files
+ - Can download your files
  
  - Code in 30+ languages
  
